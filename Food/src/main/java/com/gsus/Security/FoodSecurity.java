@@ -18,29 +18,6 @@ public UserDetailsManager userDetailsManager(DataSource dataSource)
     return new JdbcUserDetailsManager(dataSource);
 }
 
-    /*@Bean
-    public InMemoryUserDetailsManager userDetailsManager()
-    {
-        UserDetails SK= User.builder()
-                .username("SK")
-                .password("{noop}123")
-                .roles("WORKER")
-                .build();
-
-        UserDetails VJS= User.builder()
-                .username("VJS")
-                .password("{noop}123")
-                .roles("WORKER","MANAGER")
-                .build();
-
-                UserDetails JR= User.builder()
-                .username("JR")
-                .password("{noop}123")
-                .roles("WORKER","CEO","ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(SK,VJS,JR);
-    }*/
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(configurer ->
