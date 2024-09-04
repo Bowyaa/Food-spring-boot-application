@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>DELICIOUS SPECTRUM</title>
+</head>
+<body>
+
+<br><br>
+<h2 style="color:#660033">
+    DELICIOUS SPECTRUM!
+</h2>
+
+<br><br>
+
+<h3 style="color:#bf80ff">
+YUMMY FOOD CRAVINGS WELCOMES YOU !!
+</h3>
+
+<p>
+    User:<span sec:authentication="principal.username"></span>
+    <br><br>
+    Role(s):<span sec:authentication="principal.authorities"></span>
+</p>
+
+<br><br>
+
+<div sec:authorize="hasRole('MANAGER')">
+<p>
+    <a th:href="@{/manager}">Managers Meeting</a>
+</p>
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+    <p>
+        <a th:href="@{/admin}">ADMIN NOTICE</a>
+    </p>
+</div>
+<!--    -->
+<!-- Logout Button -->
+<form action="#" th:action="@{/logout}" method="post">
+<input type="submit" value="Logout">
+</form>
+
+</body>
+</html>
